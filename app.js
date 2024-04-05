@@ -1,23 +1,21 @@
 (() => {
   const getData = async () => {
     try{
-      const URL = 'https://randomuser.me/api/?results=10';
+      const URL = 'https://randomuser.me/pi/?results=10';
       const response = await fetch(URL);
       const data = await response.json();
       const usuarios = data.results;
-      console.log(response)
-      console.log(usuarios);
+
       displayUsers(usuarios);
     }
     catch(error){
-      console.log(`${error.name} ->  ${error.message}`);
-      console.log(error.stack);
-      document.getElementById('user-data').innerText = `No se pudieron cargar los datos`;
+      document.getElementById('user-data').innerText = `No se pudieron cargar los datos, intente mas tarde porfavorcito`;
     }
   }
   
   const displayUsers = (usuarios) => {
     const usersDiv = document.getElementById('user-data');
+
     usuarios.forEach((usuario) => {
       const div = document.createElement('div');
       
@@ -39,5 +37,6 @@
       usersDiv.appendChild(div);
     });
   }
+
   getData(); 
 })()
