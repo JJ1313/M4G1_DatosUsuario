@@ -1,16 +1,17 @@
 (() => {
   const getData = async () => {
     try{
-      const URL = 'https://randomuser.me/pi/?results=10';
+      const URL = 'https://randomuser.me/api/?results=10';
       const response = await fetch(URL);
       const data = await response.json();
       const usuarios = data.results;
-  
+      console.log(response)
       console.log(usuarios);
       displayUsers(usuarios);
     }
     catch(error){
-      console.log(`${error.name} : ${error.message}`);
+      console.log(`${error.name} ->  ${error.message}`);
+      console.log(error.stack);
       document.getElementById('user-data').innerText = `No se pudieron cargar los datos`;
     }
   }
@@ -25,8 +26,8 @@
       const mail = document.createElement('p');
       const phone = document.createElement('p');
 
-      img.setAttribute('src', usuario.picture.large)
-      name.innerText =   `${usuario.name.first} ${usuario.name.last}`;    
+      img.setAttribute('src', usuario.picture.large);
+      name.innerText = `${usuario.name.first} ${usuario.name.last}`;    
       mail.innerText = usuario.email;
       phone.innerText = usuario.cell;   
 
