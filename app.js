@@ -1,7 +1,7 @@
 (() => {
   const getData = async () => {
     try{
-      const URL = 'https://randomuser.me/pi/?results=10';
+      const URL = 'https://randomuser.me/api/?results=10';
       const response = await fetch(URL);
       const data = await response.json();
       const usuarios = data.results;
